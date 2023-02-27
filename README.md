@@ -24,7 +24,6 @@ it's a repo designed to create a **Web Store Application with Angular 15**
 </table>
 ## Table of contents
 
-- [Status](#status)
 - [Quick start](#quick-start)
 - [Front-end](#front-end)
 - [Author](#author)

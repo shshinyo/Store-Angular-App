@@ -28,7 +28,7 @@ const routes: Routes = [
     title: 'Login',
   },
   {
-    path: 'store-app',
+    path: 'store',
     component: LayoutContainerComponent,
     canActivate: [AuthGuard],
     children: [

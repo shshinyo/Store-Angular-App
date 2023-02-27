@@ -5,7 +5,7 @@ import { directionService } from './direction.service';
 
 export type SnackBarVariant = 'normal' | 'success' | 'error';
 
-const _panelClass = (variant?: SnackBarVariant): string[] | undefined => {
+const panelClass = (variant?: SnackBarVariant): string[] | undefined => {
   return variant === 'success'
     ? ['snack-success']
     : variant === 'error'
@@ -16,9 +16,9 @@ const _panelClass = (variant?: SnackBarVariant): string[] | undefined => {
 @Injectable({ providedIn: 'root' })
 export class SnackBarService {
   public constructor(
-    private readonly _snackBar: MatSnackBar,
-    private readonly _translate: TranslateService,
-    private readonly _direction: directionService
+    private readonly snackBar: MatSnackBar,
+    private readonly translate: TranslateService,
+    private readonly direction: directionService
   ) {}
 
   public snackbar = (
@@ -26,10 +26,10 @@ export class SnackBarService {
     variant?: SnackBarVariant,
     duration = 5000
   ): void => {
-    this._snackBar.open(message, this._translate.instant('close'), {
-      direction: this._direction.direction,
+    this.snackBar.open(message, this.translate.instant('close'), {
+      direction: this.direction.direction,
       duration,
-      panelClass: _panelClass(variant),
+      panelClass: panelClass(variant),
     });
   };
 }

@@ -22,7 +22,7 @@ export class LoginComponent {
   public constructor(
     private readonly router: Router,
     private readonly fb: FormBuilder,
-    private readonly _snack: SnackBarService,
+    private readonly snack: SnackBarService,
     private readonly _authServiceService: AuthServiceService
   ) {}
 
@@ -57,7 +57,7 @@ export class LoginComponent {
       )
       .subscribe({
         next: (res: { status: number; role: UserRole; message: string }) => {
-          this._snack.snackbar(
+          this.snack.snackbar(
             res?.message,
             res?.status === 200 ? 'success' : 'error'
           );
@@ -65,8 +65,8 @@ export class LoginComponent {
           if (res?.status === 200) {
             this.router.navigate([
               res?.role === UserRole.ADMIN
-                ? '/store-app/dashboard'
-                : '/store-app/products',
+                ? '/store/dashboard'
+                : '/store/products',
             ]);
           }
         },

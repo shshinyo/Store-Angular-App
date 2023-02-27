@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
-import { SnackBarService } from "@core/services/modal.service";
 import { SharedModule } from "@shared/shared.module";
 import { TooltipPositions } from "@shared/utils/button-properties";
+import { SnackBarService } from "src/app/services/snackbar.service";
 
 @Component({
   standalone: true,
@@ -12,7 +12,7 @@ import { TooltipPositions } from "@shared/utils/button-properties";
   styleUrls: ["./copy-text.component.scss"],
 })
 export class CopyTextComponent {
-  public constructor(private readonly _snackBarService: SnackBarService) {}
+  public constructor(private readonly snackBarService: SnackBarService) {}
 
   @Input() public readonly text: unknown;
 
@@ -27,7 +27,7 @@ export class CopyTextComponent {
   public onCopyText = (): void => {
     if (this.text) {
       navigator.clipboard.writeText(String(this.text));
-      this._snackBarService.snackbar("Text copied successfully🚀");
+      this.snackBarService.snackbar("Text copied successfully🚀");
     }
   };
 }

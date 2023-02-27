@@ -93,7 +93,7 @@ in your browser go to [http://localhost:4200](http://localhost:4200)
 
 ## Documentation
 
-- Authentication - Basic login form and use static login users for the 2 roles:
+- Authentication - Basic login:
 
   - User => `User Name : user , Password : user `
   - Admin => `User Name : admin , Password : admin `

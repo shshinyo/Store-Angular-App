@@ -6,12 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ButtonTypes, ButtonColors } from '../shared/utils/button-properties';
+import { ButtonTypes, ButtonColors } from '../../shared/utils/button-properties';
 import { LoginFormGroup } from './login-interface.interface';
 import { finalize, take } from 'rxjs/operators';
-import { SnackBarService } from '../services/snackbar.service';
-import { AuthServiceService } from '../services/auth-service.service';
-import { IUserVm, UserRole } from '../core/models/user.model';
+import { SnackBarService } from '../../services/snackbar.service';
+import { AuthServiceService } from '../../services/auth-service.service';
+import { IUserVm, UserRole } from '../../core/models/user.model';
 
 @Component({
   selector: 'app-login',

@@ -60,7 +60,7 @@ export class AddEditProductComponent implements OnInit {
     select((state: IAppState) => state.products.categoryList)
   );
 
-  public readonly dir$ = this._direction.direction$;
+  public readonly direction$ = this._direction.direction$;
 
   public submitLoading = false;
 

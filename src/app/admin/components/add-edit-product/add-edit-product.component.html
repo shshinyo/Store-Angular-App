@@ -10,15 +10,10 @@
   (cancelDialog)="cancelHandler()"
 >
   <form
-    *ngIf="dir$ | async as dir"
+    *ngIf="direction$ | async as dir"
     [formGroup]="addEditProductForm"
-    class="w-full h-full grid sm:grid-cols-2 grid-cols-1 gap-2 content-start p-0 m-0"
+    class="w-full h-full grid sm:grid-cols-1 grid-cols-1 gap-1 content-start p-0 m-0"
   >
-    <image-picker
-      class="place-self-center"
-      formControlName="image"
-    ></image-picker>
-
     <mat-form-field appearance="outline" [dir]="dir" appearance="fill">
       <mat-label>{{ "description" | translate }}</mat-label>
       <textarea formControlName="description" matInput rows="10"></textarea>
@@ -69,5 +64,9 @@
       >
       </mat-error>
     </mat-form-field>
+    <image-picker
+    class="place-self-center"
+    formControlName="image"
+  ></image-picker>
   </form>
 </app-dialog>

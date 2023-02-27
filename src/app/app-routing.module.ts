@@ -8,7 +8,7 @@ import { UserGuardGuard } from './core/guards/user.guard';
 import { UserRole } from './core/models/user.model';
 import { LayoutContainerComponent } from './layout/app-container/app-container.component';
 import { LayoutHeaderComponent } from './layout/header/app-header.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { ForbiddenComponent } from './pages/forbidden.component';
 import { NotFoundComponent } from './pages/not-found.component';
 import { soonComponent } from './pages/soon.component';

@@ -112,7 +112,6 @@ export class MagicSearchInputComponent implements OnDestroy {
   public onFocus(): void {
     this.searchInput.nativeElement.style.outline = this.outlineOption;
     this._inputFocused = true;
-
     this.focus.emit();
   }
 

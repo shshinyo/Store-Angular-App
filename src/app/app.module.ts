@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,16 +8,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { appEffects, appReducers } from './app.state';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from './core/core.module';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
-  declarations: [AppRoutingModule.Components],
+  declarations: [AppRoutingModule.Components ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     SharedModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot(appEffects),
+    EffectsModule.forRoot(appEffects)
   ],
   providers: [],
   bootstrap: [AppComponent],

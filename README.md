@@ -33,6 +33,11 @@ it's a repo designed to create a **Web Store Application with Angular 15**
 - [x] Angular : 15.1.5
 - [x] Angular CLI : 15.2.0
 - [x] tailwind : 3.2.6
+- [x] Ngrx : 15.3.0
+- [x] Rxjs : 7.5.0
+- [x] @angular/forms : 15.0.0
+- [x] @angular/material : 15.1.4
+
 
 > Features
 - [x] Routing

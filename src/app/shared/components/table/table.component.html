@@ -1,7 +1,7 @@
 <div
   class="sm:min-w-full w-max flex flex-col justify-center items-stretch bg-white"
 >
-  <table>
+  <table class="font-mont">
     <thead [ngClass]="headerClass" class="table-header shadow-sm sticky top-0">
       <tr>
         <ng-container
@@ -90,7 +90,7 @@
   </table>
 
   <div
-    *ngIf="data.length > 0 && !!pagination"
+    *ngIf="data.length > 0 && !! pagination"
     class="sticky bottom-0"
     style="z-index: 9"
   >
@@ -98,7 +98,6 @@
   </div>
 </div>
 
-<!-- If no template is provided use keys as headers and display all values -->
 <ng-template #defaultHeaderTemplate let-data>
   <th *ngFor="let header of data[0] | keyvalue">{{ header.key }}</th>
 </ng-template>

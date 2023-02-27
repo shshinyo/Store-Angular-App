@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { BidirectionallyService } from './direction.service';
+import { directionService } from './direction.service';
 
 export type SnackBarVariant = 'normal' | 'success' | 'error';
 
@@ -18,7 +18,7 @@ export class SnackBarService {
   public constructor(
     private readonly _snackBar: MatSnackBar,
     private readonly _translate: TranslateService,
-    private readonly _direction: BidirectionallyService
+    private readonly _direction: directionService
   ) {}
 
   public snackbar = (

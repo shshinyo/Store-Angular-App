@@ -7,7 +7,7 @@ import {
   ContentChild,
   TemplateRef,
 } from '@angular/core';
-import { BidirectionallyService } from 'src/app/services/direction.service';
+import { directionService } from 'src/app/services/direction.service';
 
 import {
   ButtonColors,
@@ -21,7 +21,7 @@ import {
 })
 export class DialogComponent {
   public constructor(
-    private readonly _bidirectionallyService: BidirectionallyService
+    private readonly _bidirectionallyService: directionService
   ) {}
   @ContentChild('headerContent') public headerContent!: TemplateRef<any>;
 

@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { IAppState } from 'src/app/app.state';
-import { BidirectionallyService } from 'src/app/services/direction.service';
+import { directionService } from 'src/app/services/direction.service';
 import { CreateProduct, GetAllCategories, UpdateProduct } from '../../store';
 import { IAddEditProductFormGroup } from '../../utils/interfaces/add-edit-product-form-group.interface';
 import { IProduct } from '../../utils/interfaces/products.interface';
@@ -29,7 +29,7 @@ export class AddEditProductComponent implements OnInit {
     },
     public readonly _dialogRef: MatDialogRef<AddEditProductComponent>,
     private readonly toasterService: ToastrService,
-    private readonly _direction: BidirectionallyService,
+    private readonly _direction: directionService,
     private readonly translateService: TranslateService,
     private readonly store: Store<IAppState>
   ) {}

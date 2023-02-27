@@ -1,7 +1,7 @@
 import { Direction } from '@angular/cdk/bidi';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BidirectionallyService } from './direction.service';
+import { directionService } from './direction.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { BidirectionallyService } from './direction.service';
 export class LanguageService {
   public constructor(
     private readonly translateService: TranslateService,
-    public readonly directionService: BidirectionallyService
+    public readonly directionService: directionService
   ) {
     localStorage.getItem('lang') ?? localStorage.setItem('lang', 'en');
     this.setLanguage(

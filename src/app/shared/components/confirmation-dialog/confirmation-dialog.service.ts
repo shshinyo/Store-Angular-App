@@ -5,7 +5,7 @@ import { ModalSize } from '../../utils/enum/modal-size-enum';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { BidirectionallyService } from 'src/app/services/direction.service';
+import { directionService } from 'src/app/services/direction.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class ConfirmationDialogService {
   public constructor(
     private readonly dialog: MatDialog,
     private readonly translateService: TranslateService,
-    private readonly _direction: BidirectionallyService
+    private readonly _direction: directionService
   ) {}
 
   public Confirm(

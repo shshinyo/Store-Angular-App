@@ -6,7 +6,7 @@ import { map, takeUntil, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class BidirectionallyService implements OnDestroy {
+export class directionService implements OnDestroy {
   public constructor(public readonly dir: Directionality) {
     this.dir.change
       .pipe(

@@ -1,0 +1,203 @@
+<ng-template #button>
+  <div class="flex justify-center items-center gap-1">
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    <mat-icon *ngIf="svgIcon" [svgIcon]="svgIcon"></mat-icon>
+    <span *ngIf="text" class="mx-1">{{ text }}</span>
+    <ng-content></ng-content>
+  </div>
+</ng-template>
+
+<ng-container [ngSwitch]="matType">
+  <button
+    *ngSwitchCase="ButtonTypes.basic"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    mat-button
+    [color]="color"
+    [class.loading]="isLoading"
+    [disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.raised"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    mat-raised-button
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [color]="color"
+    [class.loading]="isLoading"
+    [disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.stroked"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    mat-stroked-button
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [color]="color"
+    [class.loading]="isLoading"
+    [disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.flat"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    mat-flat-button
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [color]="color"
+    [class.loading]="isLoading"
+    [disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.miniFap"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    mat-mini-fab
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [color]="color"
+    [class.loading]="isLoading"
+    [attr.disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.icon"
+    [ngClass]="btnClass"
+    mat-icon-button
+    [class.w-full]="isFullWidth"
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [color]="color"
+    [class.loading]="isLoading"
+    mat-icon-button
+    [disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.fap"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    mat-fab
+    [color]="color"
+    [class.loading]="isLoading"
+    [attr.disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.rounded"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [ngStyle]="{ color: color, 'border-radius.px': 30, padding: '5px 10px' }"
+    [class.loading]="isLoading"
+    [attr.disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <button
+    *ngSwitchCase="ButtonTypes.round_stroked"
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [ngStyle]="{
+      color: color,
+      border: '1.5px solid',
+      'border-radius.px': 30,
+      padding: '3px 10px'
+    }"
+    matRipple
+    [class.loading]="isLoading"
+    [attr.disabled]="disabled || isLoading"
+    [type]="type"
+    (click)="clicked.emit()"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </button>
+
+  <a
+    *ngSwitchCase="ButtonTypes.anchor"
+    [href]="url"
+    [target]="target"
+    mat-icon-button
+    [ngClass]="btnClass"
+    [class.w-full]="isFullWidth"
+    [matTooltip]="toolTip"
+    [matTooltipPosition]="tooltipPosition"
+    [color]="color"
+    [class.loading]="isLoading"
+    [attr.disabled]="disabled || isLoading"
+  >
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngTemplateOutlet="button"></ng-container>
+    </ng-container>
+  </a>
+</ng-container>
+
+<ng-template #loading>
+  <mat-progress-spinner
+    [diameter]="24"
+    class="mx-auto my-1.5"
+    mode="indeterminate"
+  ></mat-progress-spinner>
+</ng-template>

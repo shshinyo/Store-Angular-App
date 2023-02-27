@@ -1,0 +1,73 @@
+<app-dialog
+  [isLoading]="submitLoading"
+  [isValid]="addEditProductForm.valid"
+  [submitBtnText]="'save' | translate"
+  [title]="modalTitle"
+  titleIcon="shopping_basket"
+  [cancelBtnText]="'cancel' | translate"
+  (submitDialog)="onSubmit()"
+  (closeDialog)="cancelHandler()"
+  (cancelDialog)="cancelHandler()"
+>
+  <form
+    *ngIf="dir$ | async as dir"
+    [formGroup]="addEditProductForm"
+    class="w-full h-full grid sm:grid-cols-2 grid-cols-1 gap-2 content-start p-0 m-0"
+  >
+    <image-picker
+      class="place-self-center"
+      formControlName="image"
+    ></image-picker>
+
+    <mat-form-field appearance="outline" [dir]="dir" appearance="fill">
+      <mat-label>{{ "description" | translate }}</mat-label>
+      <textarea formControlName="description" matInput rows="10"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [dir]="dir" appearance="fill">
+      <mat-label>{{ "title" | translate }}</mat-label>
+      <input formControlName="title" matInput />
+      <mat-error
+        *ngIf="
+          addEditProductForm.get('title')?.touched &&
+          addEditProductForm.get('title')?.hasError('required')
+        "
+      >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [dir]="dir" appearance="fill">
+      <mat-label>{{ "price" | translate }}</mat-label>
+      <input formControlName="price" matInput type="number" />
+      <mat-icon matSuffix>$</mat-icon>
+
+      <mat-error
+        *ngIf="
+          addEditProductForm.get('price')?.touched &&
+          addEditProductForm.get('price')?.errors
+        "
+      >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+      *ngIf="categories$ | async as allCategories"
+      [dir]="dir"
+      appearance="fill"
+    >
+      <mat-label>{{ "category" | translate }}</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let cat of allCategories" [value]="cat">
+          {{ cat }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          addEditProductForm.get('category')?.touched &&
+          addEditProductForm.get('category')?.hasError('required')
+        "
+      >
+      </mat-error>
+    </mat-form-field>
+  </form>
+</app-dialog>

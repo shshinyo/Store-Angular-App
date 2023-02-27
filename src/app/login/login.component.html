@@ -1,0 +1,77 @@
+<div class="m-2  flex flex-[1_1_100%] items-end justify-end  max-w-[100%]">
+  <app-language-selector></app-language-selector>
+</div>
+<div class="min-h-full font-mont flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-4">
+    <div>
+      <a [routerLink]="['/']">
+        <img class="mx-auto h-12 w-auto" src="../../assets/images/stc.png"
+          alt="Workflow">
+      </a>
+    </div>
+    <form class="mt-8 space-y-6  rounded-lg" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+      <div class="bg-white py-8 px-8 rounded-lg">
+        <div class="rounded-md shadow-sm ">
+
+
+
+          <div class="space-y-2">
+            <label for="userName"
+           class=" text-f4"> <span>{{'userName' | translate}}</span>
+          </label>
+            <input matInput name="userName" type="userName" autocomplete="userName" (keyup.enter)="onSubmitLogin()"
+              formControlName="userName" required [ngClass]="
+              loginForm.get('userName')?.touched &&
+              loginForm.get('userName')?.invalid
+                ? 'border-2 border-red-500'
+                : null"
+              class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+            <mat-error class="text-[red] text-[11px]"
+              *ngIf="loginForm.controls['userName'].errors?.['required'] && loginForm.controls['userName'].dirty">
+               {{'requiredField' | translate}} </mat-error>
+          </div>
+          <div class=" mt-3 space-y-2">
+            <label for="password" class="text-f4 "> {{'password' | translate}}</label>
+            <input matInput id="password" [ngClass]="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.invalid
+              ? 'border-2 border-red-500'
+              : null" name="password" (keyup.enter)="onSubmitLogin()" type="password"
+              formControlName="password" autocomplete="current-password" required
+              class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm ">
+            <mat-error class="text-[red] text-[11px]"
+              *ngIf="loginForm.controls['password'].errors?.['required'] && loginForm.controls['password'].dirty">
+              {{'requiredField' | translate}} </mat-error>
+          </div>
+        </div>
+        <div class="flex items-center justify-between space-y-2">
+          <div class="flex items-center ">
+            <input id="remember-me" name="rememberMe" formControlName="rememberMe" type="checkbox"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="remember-me" class="ml-2 block mx-2 text-f5 text-gray-900"> {{'rememberMe'|translate}} </label>
+          </div>
+          <div class="text-sm">
+            <a [routerLink]="['/soon']" class="text-f5 text-indigo-600 hover:text-indigo-500">
+             {{'forgetPassword'|translate}} </a>
+          </div>
+        </div>
+        <div class="mt-3">
+
+          <app-button
+          class="w-full mt-3"
+          btnClass="w-full text-md"
+          [matType]="ButtonTypes.flat"
+          [color]="ButtonColors.primary"
+          [isLoading]="loginSubmit"
+          [disabled]="loginForm.invalid"
+          type="submit"
+          [text]="'login' | translate"
+        >
+        </app-button>
+        </div>
+      </div>
+    </form>
+    <p class="text-center text-f4">  {{'dontHaveAccount' | translate}} <a [routerLink]="['/soon']"
+        class="px-2 font-semibold  hover:text-a-blue">  {{'registerNow' | translate}} </a> </p>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+<div class="w-full h-full flex flex-col justify-center items-stretch">
+  <div class="h-40 "></div>
+
+  <div class="flex justify-center items-start">
+    <div
+      class="sm:w-11/12 w-full flex flex-col justify-center items-stretch sm:gap-2 gap-1 -mt-28"
+    >
+      <div class="flex mb-4 flex-wrap justify-between items-center">
+        <magic-search-input
+          class="sm:h-11 h-8 w-[50%]"
+          [formControl]="search"
+          outlineOption="2.5px solid #03a9f4"
+          [placeholder]="('search' | translate) + '...'"
+        ></magic-search-input>
+
+        <app-button
+          btnClass="bg-gray-300"
+          [color]="ButtonColors.primary"
+          icon="post_add"
+          [text]="'create' | translate"
+          (clicked)="onOpenAddModal()"
+        >
+        </app-button>
+      </div>
+
+      <app-table
+        class="table-scrollable max-h-[77vh] shadow-md bg-white"
+        [data]="productsList"
+        [dataLoaded]="productsLoaded"
+        [extendable]="true"
+        [colSpanCount]="9"
+      >
+        <ng-template #headers>
+          <th class="sm:text-[14px] text-xs text-start"></th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "image" | translate }}
+          </th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "title" | translate }}
+          </th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "price" | translate }}
+          </th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "rating" | translate }}
+          </th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "count" | translate }}
+          </th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "category" | translate }}
+          </th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "actions" | translate }}
+          </th>
+        </ng-template>
+
+        <ng-template
+          #rows
+          let-row
+          let-index="index"
+          let-isExpanded="isExpanded"
+        >
+          <td class="sm:text-[14px] text-xs break-words">
+            <app-button
+              btnClass="text-gray-600"
+              [matType]="ButtonTypes.icon"
+              [toolTip]="
+                (isExpanded ? ('hide' | translate) : ('show' | translate)) +
+                ' ' +
+                ('details' | translate)
+              "
+              [icon]="isExpanded ? 'expand_less' : 'keyboard_arrow_down'"
+            >
+            </app-button>
+          </td>
+
+          <td class="sm:text-[15px] text-xs break-words">
+            <img
+              [ngSrc]="row?.image"
+              width="100"
+              height="80"
+              loading="eager"
+              class="rounded-xl border-2 border-gray-200 shadow-md"
+            />
+          </td>
+
+          <td
+            class="max-w-[300px] sm:text-[14px] leading-5 text-xs break-words"
+          >
+            {{ row?.title}}
+          </td>
+
+          <td class="sm:text-[15px] text-xs break-words">
+            {{ (row?.price | number : "1.2")}}$
+          </td>
+
+          <td class="sm:text-[15px] text-xs break-words">
+            <stars [rate]="row?.rating?.rate"></stars>
+          </td>
+
+          <td class="sm:text-[15px] text-xs break-words">
+            {{ row?.rating?.count}}
+          </td>
+
+          <td class="sm:text-[15px] text-xs break-words">
+            {{ row?.category}}
+          </td>
+
+          <td (click)="$event.stopPropagation()">
+            <div
+              class="h-full w-auto flex justify-start items-center sm:gap-2 gap-[3px]"
+            >
+              <app-button
+                btnClass="bg-gray-600 text-white"
+                [matType]="ButtonTypes.miniFap"
+                [color]="ButtonColors.primary"
+                icon="edit_note"
+                [toolTip]="'edit' | translate"
+                (clicked)="onOpenUploadModal(row)"
+              >
+              </app-button>
+
+              <app-button
+                [color]="ButtonColors.warn"
+                [matType]="ButtonTypes.miniFap"
+                icon="delete"
+                [toolTip]="'delete' | translate"
+                (clicked)="onDeleteProduct(row)"
+              >
+              </app-button>
+            </div>
+          </td>
+        </ng-template>
+
+        <ng-template #extendableArea let-row>
+          <div
+            class="min-h-min flex flex-col justify-start items-start gap-1 md:p-10 p-4 bg-slate-50 text-gray-600"
+          >
+            <span class="text-start text-lg font-semibold">{{
+              "description" | translate
+            }}</span>
+            <p>{{ row?.description}}</p>
+          </div>
+        </ng-template>
+
+        <ng-template #pagination>
+          <div
+            class="h-auto w-full bg-white flex justify-end items-center px-2"
+          >
+            <mat-paginator
+              *ngIf="!!tableConfig"
+              class="w-1/2"
+              panelClass="bg-transparent"
+              [length]="tableConfig.totalLength"
+              [pageSize]="tableConfig.size"
+              [pageSizeOptions]="tableConfig.pageSizeOptions"
+              (page)="onPageChange($event)"
+            >
+            </mat-paginator>
+          </div>
+        </ng-template>
+
+        <ng-template #noData>
+          <no-data [text]="'noData' | translate"> </no-data>
+        </ng-template>
+      </app-table>
+    </div>
+  </div>
+</div>

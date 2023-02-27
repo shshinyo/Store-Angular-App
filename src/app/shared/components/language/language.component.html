@@ -1,0 +1,33 @@
+<button class="!flex gap-1 m-3 justify-center"  mat-icon-button [matMenuTriggerFor]="languages" type="button">
+<span class="font-mont text-[20px]" >{{selectedLang.id}}</span>
+
+  <img
+  class="w-full rounded-[50%]"
+  [src]="'assets/images/flags/' + selectedLang.id + '.svg'"
+  [alt]="selectedLang.id"
+/>
+
+</button>
+
+<!-- Language menu -->
+<mat-menu [xPosition]="'before'" #languages="matMenu">
+  <ng-container *ngFor="let lang of availableLanguages">
+    <button mat-menu-item (click)="onSelectLang(lang)">
+      <span class="flex justify-center items-center gap-1">
+        <span class="relative w-6 shadow rounded-sm overflow-hidden">
+          <!-- <span
+            class="absolute inset-0 ring-1 ring-inset ring-black ring-opacity-10"
+          ></span> -->
+          <img
+            class="w-full rounded-[50%]"
+            [src]="'assets/images/flags/' + lang?.id + '.svg'"
+            [alt]="lang"
+          />
+        </span>
+        <span>{{ lang?.title }}</span>
+      </span>
+    </button>
+  </ng-container>
+</mat-menu>
+
+

@@ -1,0 +1,108 @@
+<div
+  class="sm:min-w-full w-max flex flex-col justify-center items-stretch bg-white"
+>
+  <table>
+    <thead [ngClass]="headerClass" class="table-header shadow-sm sticky top-0">
+      <tr>
+        <ng-container
+          *ngTemplateOutlet="
+            headers || defaultHeaderTemplate;
+            context: { $implicit: data }
+          "
+        ></ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="dataLoaded; else loader">
+        <tr *ngIf="!data.length">
+          <td *ngIf="noData" [attr.colspan]="colSpanCount">
+            <ng-container *ngTemplateOutlet="noData"></ng-container>
+          </td>
+        </tr>
+
+        <ng-container *ngIf="data.length">
+          <ng-container *ngFor="let row of data; let rowIndex = index">
+            <tr
+              [class]="'bg-slate-100 border-b-4 border-slate-50 ' + rowClass"
+              [ngClass]="{
+                'hover:cursor-pointer hover:bg-slate-50': extendable,
+                'hover:cursor-default': !extendable
+              }"
+              (click)="extendable && onExpandRow(rowIndex, row)"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  rows || defaultRowTemplate;
+                  context: {
+                    $implicit: row,
+                    rowIndex,
+                    isExpanded: isExpanded(rowIndex)
+                  }
+                "
+              ></ng-container>
+            </tr>
+
+            <ng-container *ngIf="!!extendableArea && extendable">
+              <tr *ngIf="extendableByDefault ? true : isExpanded(rowIndex)">
+                <td class="p-0 h-auto w-[50vw]" [attr.colspan]="colSpanCount">
+                  <ng-container
+                    *ngTemplateOutlet="
+                      extendableArea;
+                      context: {
+                        $implicit: row,
+                        index: rowIndex,
+                        isExpanded: isExpanded(rowIndex)
+                      }
+                    "
+                  ></ng-container>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #loader>
+        <tr>
+          <td [attr.colspan]="colSpanCount">
+            <div
+              class="p-0 h-auto min-h-[50vh] w-full flex justify-center items-center"
+            >
+              <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+
+  <div
+    *ngIf="data.length > 0 && !!pagination"
+    class="sticky bottom-0"
+    style="z-index: 9"
+  >
+    <ng-container *ngTemplateOutlet="pagination"></ng-container>
+  </div>
+</div>
+
+<!-- If no template is provided use keys as headers and display all values -->
+<ng-template #defaultHeaderTemplate let-data>
+  <th *ngFor="let header of data[0] | keyvalue">{{ header.key }}</th>
+</ng-template>
+
+<ng-template #defaultRowTemplate let-row>
+  <td *ngFor="let row of row | keyvalue">{{ row.value }}</td>
+</ng-template>

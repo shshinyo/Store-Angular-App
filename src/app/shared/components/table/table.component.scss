@@ -1,0 +1,20 @@
+
+::ng-deep table {
+  .table-header {
+    z-index: 9;
+    background-color: var(--nav-bg);
+    border-bottom: 1.5px solid var(--nav-border);
+  }
+
+  th {
+    padding: 0.8rem 0.7rem;
+  }
+
+  td {
+    padding: 0.1rem 0.7rem;
+  }
+
+  .check-box {
+    padding: 0 auto !important;
+  }
+}

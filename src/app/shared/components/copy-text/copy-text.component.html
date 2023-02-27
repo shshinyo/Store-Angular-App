@@ -1,0 +1,24 @@
+<div
+  class="w-auto h-auto flex flex-wrap items-center gap-1 hover:cursor-cell"
+  [ngClass]="copyClass"
+  (mouseover)="show = true"
+  (mouseleave)="show = false"
+>
+  <ng-content></ng-content>
+
+  <mat-icon
+    *ngIf="hoverable && show"
+    [matTooltipPosition]="tooltipPosition"
+    matTooltip="copy"
+    (click)="onCopyText()"
+    >insert_link</mat-icon
+  >
+
+  <mat-icon
+    *ngIf="!hoverable"
+    [matTooltipPosition]="tooltipPosition"
+    matTooltip="copy"
+    (click)="onCopyText()"
+    >insert_link</mat-icon
+  >
+</div>

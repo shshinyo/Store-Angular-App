@@ -1,0 +1,9 @@
+.magic-input-container {
+  @apply py-[2px] px-[5px]  h-full w-auto flex justify-between items-center bg-white
+   shadow-md border border-gray-300;
+
+  input {
+    @apply h-full flex-grow mx-2  outline-none sm:text-lg text-xs font-medium;
+  }
+
+}

@@ -1,0 +1,88 @@
+<div
+  [dir]="direction"
+  class="max-w-md sm:max-w-full m-auto flex flex-col w-full h-full"
+>
+  <ng-container *ngIf="!!headerContent; else defaultHeaderContent">
+    <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+  </ng-container>
+
+  <div
+    class="p-2 h-5/6 overflow-auto"
+    [class.overflow-hidden]="contentScroll"
+    id="dialogContentContainer"
+  >
+    <ng-content></ng-content>
+  </div>
+
+  <div class="flex justify-end">
+    <ng-container *ngIf="!!footerContent; else defaultFooterContent">
+      <ng-container *ngTemplateOutlet="footerContent"></ng-container>
+    </ng-container>
+
+    <ng-template #defaultFooterContent>
+      <div
+        *ngIf="
+          !hideSaveButton || cancelBtnText || cancelBtnIcon || deleteBtnText
+        "
+        class="w-full flex items-center p-3 sm:mt-0 gap-2 bg-slate-50 border-t-2 border-slate-200"
+      >
+        <app-button
+          *ngIf="!hideSaveButton"
+          [class]="'px-0'"
+          [disabled]="!isValid"
+          [isLoading]="isLoading"
+          [text]="submitBtnText"
+          (clicked)="submitDialog.emit()"
+          [matType]="buttonTypes.raised"
+          [color]="buttonColors.primary"
+        >
+        </app-button>
+
+        <app-button
+          [class]="'px-0'"
+          *ngIf="cancelBtnText || cancelBtnIcon"
+          (clicked)="cancelDialog.emit()"
+          [matType]="buttonTypes.raised"
+          [color]="buttonColors.warn"
+          [text]="cancelBtnText"
+          [icon]="cancelBtnIcon"
+        >
+        </app-button>
+
+        <app-button
+          [class]="'px-0'"
+          *ngIf="deleteBtnText"
+          [isLoading]="isLoading"
+          [text]="deleteBtnText"
+          (clicked)="deletePage.emit()"
+          [matType]="buttonTypes.stroked"
+          [color]="buttonColors.warn"
+        >
+        </app-button>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #defaultHeaderContent>
+  <div
+    class="flex flex-0 items-center justify-between p-3 bg-slate-50 border-b-2 border-slate-200"
+  >
+    <div class="flex justify-start items-center gap-2 text-xl font-bold">
+      <mat-icon>{{ titleIcon }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="flex justify-center">
+      <ng-content select="[modal-header-options]"></ng-content>
+
+      <app-button
+        [matType]="buttonTypes.icon"
+        [color]="buttonColors.basic"
+        icon="close"
+        (clicked)="closeDialog.emit()"
+      >
+      </app-button>
+    </div>
+  </div>
+</ng-template>

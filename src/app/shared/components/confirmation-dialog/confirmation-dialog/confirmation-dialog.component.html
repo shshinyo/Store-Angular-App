@@ -1,0 +1,65 @@
+<div
+  class="flex flex-col justify-between items-stretch relative overflow-hidden"
+>
+  <div class="flex justify-end items-center">
+    <app-button
+      class="mt-[5px] mx-[5px]"
+      [matType]="ButtonTypes.icon"
+      icon="close"
+      (clicked)="dialogRef.close(false)"
+    >
+    </app-button>
+  </div>
+
+  <!-- Contetnt -->
+  <div class="flex flex-row flex-auto items-center sm:items-start sm:p-4 p-2">
+    <div
+      class="flex flex-0 items-center justify-center w-10 h-10 sm:mx-4 mx-2 rounded-full"
+      [ngClass]="' text-red-600 bg-red-100 dark:text-red-50 dark:bg-red-600'"
+    >
+      <mat-icon style="height: 25px; width: 25px; font-size: 25px"
+        >report_gmailerrorred</mat-icon
+      >
+    </div>
+
+    <div
+      class="flex flex-col items-start mt-4 sm:mt-0 sm:pe-8 space-y-1 text-start"
+    >
+      <div
+        class="sm:text-lg text-sm sm:leading-6 leading-3 sm:font-medium font-normal"
+      >
+        <span [innerText]="data.title"></span>
+      </div>
+      <div
+        class="text-secondary sm:text-base text-xs sm:font-normal font-light"
+      >
+        <span [innerText]="data.message"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div
+    class="flex items-center justify-center sm:justify-start px-4 py-[8px] gap-3 bg-gray-50 border-2 border-gray-100 dark:bg-black dark:bg-opacity-10"
+  >
+    <app-button
+      data-cy="confirm"
+      class="w-auto"
+      (clicked)="dialogRef.close(true)"
+      [matType]="ButtonTypes.flat"
+      [color]="ButtonColors.warn"
+    >
+      <span [textContent]="data.ok"></span>
+    </app-button>
+
+    <app-button
+      data-cy="cancel"
+      class="w-auto"
+      (clicked)="dialogRef.close(false)"
+      [matType]="ButtonTypes.stroked"
+      [color]="ButtonColors.basic"
+    >
+      <span [textContent]="data.close"></span>
+    </app-button>
+  </div>
+</div>

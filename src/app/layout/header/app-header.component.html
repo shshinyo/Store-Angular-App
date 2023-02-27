@@ -1,0 +1,27 @@
+<nav
+  class="sticky top-0 md:h-[80px] h-[60px] flex justify-between bg-[#e5e7eb] dark:bg-gray-800 rounded shadow-lg py-3 px-5">
+  <div class="flex items-center space-x-3 md:px-5 px-2">
+    <span class="flex  font-bold md:text-2xl text-xs leading-6 text-gray-800 dark:text-white">
+     <img class="w-[50px] h-[50px]" src="../../../assets/images/stc.png"/>
+    </span>
+  </div>
+
+  <div class="flex justify-center items-center gap-3">
+    <app-language-selector></app-language-selector>
+
+    <ng-container *ngIf="user$ | async as user">
+      <button mat-button [matMenuTriggerFor]="menu" class="md:text-base text-xs font-medium">
+        <span class="font-mont font-bold"> {{ user?.userName }} </span>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="signOut()"
+          class="flex justify-start items-center gap-2 px-23 md:text-base text-xs font-medium">
+          <span class="font-mont font-semibold items-center  flex ">{{ "logout" | translate }} <img class="m-2"
+              src="../../../assets/images/icons/logout.svg" /> </span>
+
+        </button>
+      </mat-menu>
+    </ng-container>
+  </div>
+</nav>

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Animations } from '@shared/animations/animations';
-import { IProduct } from 'src/app/admin/utils/interfaces/products.interface';
+import { IProduct } from 'src/app/dashborad/utils/interfaces/products.interface';
 
 @Component({
   selector: 'product',

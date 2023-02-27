@@ -41,14 +41,14 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./admin/admin.module').then((m) => m.AdminModule),
+          import('./dashborad/admin.module').then((m) => m.AdminModule),
         title: 'Dashboard',
         canActivate: [AdminGuardGuard],
       },
       {
         path: 'products',
         loadChildren: () =>
-          import('./user/product.module').then((m) => m.ProductModule),
+          import('./product/product.module').then((m) => m.ProductModule),
         title: 'Products',
         canActivate: [UserGuardGuard],
       },

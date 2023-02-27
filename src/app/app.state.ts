@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as AdminDashboard from './admin/store/index';
-import * as Products from './store/index';
+import * as AdminDashboard from './dashborad/store/index';
+import * as Products from './product/store/index';
 
 export interface IAppState {
   admin: AdminDashboard.AdminStates;

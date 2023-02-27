@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogUiComponent } from './dialog-ui.component';
+import { DialogComponent } from './dialog-ui.component';
 
 describe('DialogUiComponent', () => {
-  let component: DialogUiComponent;
-  let fixture: ComponentFixture<DialogUiComponent>;
+  let component: DialogComponent;
+  let fixture: ComponentFixture<DialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DialogUiComponent]
+      declarations: [DialogComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogUiComponent);
+    fixture = TestBed.createComponent(DialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

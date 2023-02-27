@@ -9,7 +9,9 @@
   font-family: "Montserrat-Arabic";
   src: url("../assets/fonts/Montserrat-Arabic-Regular.ttf");
 }
-
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-right-style: hidden;
+}
 :root {
   --nav-bg: #f8f8f8;
   --nav-border: #d3d3d3;

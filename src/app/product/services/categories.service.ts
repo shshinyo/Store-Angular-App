@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IProduct } from 'src/app/admin/utils/interfaces/products.interface';
+import { IProduct } from 'src/app/dashborad/utils/interfaces/products.interface';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { Endpoints } from 'src/app/core/models/endpoints';
 

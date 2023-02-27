@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IProduct } from 'src/app/admin/utils/interfaces/products.interface';
+import { IProduct } from 'src/app/dashborad/utils/interfaces/products.interface';
 
 export enum productsActionEnum {
   GET_ALL_CATEGORY = '[CATEGORY] GET ALL CATEGORY',

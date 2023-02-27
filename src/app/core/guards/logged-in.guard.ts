@@ -31,7 +31,7 @@ export class ActivateLoginGuard implements CanActivate {
       map((user: IUserVm | null) => {
         const isAuthenticated: boolean = !!user;
 
-        isAuthenticated && this.router.navigateByUrl('/store-app');
+        isAuthenticated && this.router.navigateByUrl('/store');
 
         return !isAuthenticated;
       })

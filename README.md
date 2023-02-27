@@ -16,24 +16,12 @@ it's a repo designed to create a **Web Store Application with Angular 15**
 * UI prototype - [**tailwind css 3.2.6**](https://www.npmjs.com/package/tailwindcss) 
 
 
-* See the [**Live demo**](#live-demo), Test the repo with [**Quick start**](#quick-start) and for more information Read the step by step [**Tutorial**](#tutorial) or read the [**Getting started**](#getting-started)
+*  Test the repo with [**Quick start**](#quick-start) and for more information Read the step by step [**Documentation**](#Documentation) 
+
 
 </td>
 </tr>
 </table>
-
-
-# Lighthouse Audit
-
-<p align="center">
-  <p align="center">
-    <a href="https://angular.ganatan.com">
-      <img src="./img/search-engine-optimization-avec-angular-lighthouse-after.png" alt="Ganatan Lighthouse SEO Angular Example Demo"/>
-    </a>
-  </p>
-</p>
-
-
 ## Table of contents
 
 - [Status](#status)
@@ -85,7 +73,7 @@ in your browser go to [http://localhost:4200](http://localhost:4200)
 * `npm install` (installing dependencies)
 * `npm outdated` (verifying dependencies)
 
-### Developpement
+### Developement
 * `npm run start`
 * in your browser [http://localhost:4200](http://localhost:4200) 
 
@@ -98,6 +86,28 @@ in your browser go to [http://localhost:4200](http://localhost:4200)
 ### Compilation
 * `npm run build`      
 
+
+## Documentation
+
+- Authentication - Basic login form and use static login users for the 2 roles:
+
+  - User => `User Name : user , Password : user `
+  - Admin => `User Name : admin , Password : admin `
+
+- Security should be applied to the page to restrict only logged in users who can access it.
+  This display will appear depending on the user role as follows:
+
+  - #Admin View
+
+    - Should display all products in a table (Bonus: use pagination with the data)
+    - Can add product
+    - Can update product
+    - Can delete product
+
+  - #User View
+
+    - Show the different categories and under each category show the available products and filters section. (Bonus: use loading while getting the data - changing the products list with animation)
+    - For each product card user should see the full data
 
 ### Author
 * Author  : ibrahem mohamed

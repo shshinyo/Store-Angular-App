@@ -14,9 +14,9 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
-import { IProduct } from 'src/app/admin/utils/interfaces/products.interface';
+import { IProduct } from 'src/app/dashborad/utils/interfaces/products.interface';
 import { IAppState } from 'src/app/app.state';
-import { GetAllCategories, GetCategoryProducts } from '../../../store';
+import { GetAllCategories, GetCategoryProducts } from '../../store';
 import { QUERY } from '../../utils/models/category.model';
 
 @Component({

@@ -1,4 +1,4 @@
-import { IProduct } from 'src/app/admin/utils/interfaces/products.interface';
+import { IProduct } from 'src/app/dashborad/utils/interfaces/products.interface';
 
 export interface AdminStates {
   categoryList: string[] | null;
